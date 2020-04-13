@@ -40,10 +40,22 @@ class App:
 		canvas1 = Canvas(frame1, bg='yellow', width=800, height=20)
 		canvas1.pack()
 		
-		self.canvas = tkinter.Canvas(frame1, width=800, height=600)
-		self.canvas.pack()
+		self.canvas = tkinter.Canvas(frame1, width=400, height=300)
+		self.canvas.pack(padx=5, pady=10, side=tkinter.LEFT, anchor=NW)
 					
 		canvas1.create_text(400, 10, text='NonLutte - Facial Expression Recognition App', font=('verdana', 20, 'bold'))
+		
+		canvas2 = Canvas(frame1, bg='gray', width=400, height=300)
+		canvas2.create_text(75, 20, text='Video feed unavailable', font=('verdana', 10, 'bold'))
+		canvas2.pack(padx=5, pady=10, side=tkinter.LEFT)
+		
+		canvas3 = Canvas(frame1, bg='gray', width=400, height=300)
+		canvas3.create_text(75, 20, text='Video feed unavailable', font=('verdana', 10, 'bold'))		
+		canvas3.pack(padx=5, pady=10, side=tkinter.LEFT, anchor=SW)		
+
+# 		canvas4 = Canvas(frame1, bg='gray', width=400, height=300)
+# 		canvas4.pack(padx=5, pady=10, side=tkinter.RIGHT, anchor=SE)	
+		
 		frame1.pack(expand=1, fill=X, pady=10, padx=5)		
 
 # 		
@@ -52,7 +64,7 @@ class App:
 # 		self.canvas = tkinter.Canvas(window, width = 800, height = 600)
 		
 		btn = tkinter.Button(self.window, text="Close", command=self.window.destroy)
-		btn.pack(side="bottom", fill="both", expand="yes", padx=10, pady=10)			
+		btn.pack(side="bottom", padx=10, pady=10)			
 		
 		self.pb = ttk.Progressbar(self.window, orient="horizontal", length=750, mode="determinate", value=0)
 		self.pb.pack()	
@@ -123,7 +135,7 @@ class MyVideoCapture:
 		
 				cv2.putText(test_img, predicted_emotion, (int(x+20), int(y-20)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 		
-			resized_img = cv2.resize(test_img, (800, 600))
+			resized_img = cv2.resize(test_img, (400, 300))
 			return (ret, cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB))	
 		
 	
